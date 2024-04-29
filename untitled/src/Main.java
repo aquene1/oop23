@@ -1,8 +1,13 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Main {
+    private int n = 0;
+    private int k = 0;
+    private int p = 0;
     private JPanel Rootpanel;
     private JTabbedPane TabbedAlbums;
     private JPanel ObladaetTab;
@@ -42,6 +47,7 @@ public class Main {
 
 
     public Main(){
+
 
         ComboBoxObla.addActionListener(new ActionListener() {
             @Override
@@ -111,6 +117,7 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (ComboBoxObla.getSelectedItem().toString().equals("PLAYERS CLUB")) {
+
                 LinkPlaceObla.setText("https://open.spotify.com/album/5sw0ehyM0UI5NX7BwPQlXI?si=cFDNUo6MQn6r3fYUN_hpmg");
                 }
                 if (ComboBoxObla.getSelectedItem().toString().equals("PLAYERS CLUB 2")) {
@@ -122,7 +129,16 @@ public class Main {
                 if (ComboBoxObla.getSelectedItem().toString().equals("Double Tap")) {
                     LinkPlaceObla.setText("https://open.spotify.com/album/4Jb3t0caas9kyYZ2YoV8K3?si=-yYNYhyuREKgYObv2lp3zg");
                 }
-
+                n++;
+                try {
+                    FileWriter fw = new FileWriter("linkvisits.txt", false);
+                    String str = "Platina visited " + p + " times\n" + "Lil Krystal visited " + k + " times\n"+ "Obladaet visited " + n + " times\n";
+                    fw.write(str);
+                    fw.close();
+                    System.out.printf("Succsessses");
+                } catch (IOException var3) {
+                    throw new RuntimeException(var3);
+                }
             }
         });
 
@@ -206,6 +222,16 @@ public class Main {
             }
             if (ComboBoxKrystal.getSelectedItem().toString().equals("Brat 3")) {
                 LinkPlaceKrystal.setText("https://open.spotify.com/album/49LfsYtLdDO2lXgGWqLsxI?si=DQCV0kmDTFqGph2qo_sx-w");
+            }
+            k++;
+            try {
+                FileWriter fw = new FileWriter("linkvisits.txt", false);
+                String str = "Platina visited " + p + " times\n" + "Lil Krystal visited " + k + " times\n"+ "Obladaet visited " + n + " times\n";
+                fw.write(str);
+                fw.close();
+                System.out.printf("Succsessses");
+            } catch (IOException var3) {
+                throw new RuntimeException(var3);
             }
 
         }
@@ -307,9 +333,20 @@ public class Main {
                 if (ComboBoxPlatina.getSelectedItem().toString().equals("Sosa Muzik")) {
                     LinkPlacePlatina.setText("https://open.spotify.com/album/2YAGIocNPp0fc29od97AKh?si=8Zys8QklQ527RH9PYpLP3g");
                 }
-
+                p++;
+                System.out.println(p);
+                try {
+                    FileWriter fw = new FileWriter("linkvisits.txt", false);
+                    String str = "Platina visited " + p + " times\n" + "Lil Krystal visited " + k + " times\n"+ "Obladaet visited " + n + " times\n";
+                    fw.write(str);
+                    fw.close();
+                    System.out.printf("Succsessses");
+                } catch (IOException var3) {
+                    throw new RuntimeException(var3);
+                }
             }
         });
+
 
     }
 }
